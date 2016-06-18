@@ -9,14 +9,20 @@ Template.hello.onCreated(function helloOnCreated() {
 });
 
 Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
+  tasks: function() {
+      var tasks = Tasks.find().fetch();
+      return tasks
   },
 });
 
 Template.hello.events({
-  'click button'(event, instance) {
+  'click #dodajTo'(event, instance) {
     // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
+    let taskTitle = $('#title').val()
+    console.log(taskTitle)
+    Tasks.insert({
+        text: taskTitle,
+        description: "gunwo"
+    })
   },
 });

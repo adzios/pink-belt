@@ -10,8 +10,20 @@
 </body>
 
 <template name="hello">
-  <button>Click Me</button>
+  <button id="dodajTo">Click Me</button>
+  <input id="title"/>
+
   <p>You've pressed the button {{counter}} times.</p>
+
+  {{#each tasks}}
+    {{>task}}
+  {{/each}}
+
+</template>
+
+<template name="task">
+  <p>{{text}}</p>
+  <p>{{description}}</p>
 </template>
 
 <template name="info">
